@@ -284,227 +284,227 @@
 
     \subsection{Analysis}\label{analysis}
 
-\paragraph{Observed Trend 1}\label{observed-trend-1}
+\paragraph{Observed Trend 1: There is a trendancy I observed from the
+bubble chart, that is, the more rides the less average
+fares.}\label{observed-trend-1-there-is-a-trendancy-i-observed-from-the-bubble-chart-that-is-the-more-rides-the-less-average-fares.}
 
-\paragraph{Observed Trend 2}\label{observed-trend-2}
+\paragraph{Observed Trend 2: The rides in urban cities
+(\textasciitilde{}68\%) are much more than the rides in suburban
+(\textasciitilde{}26\%) and rural (\textasciitilde{}5\%)
+cities.}\label{observed-trend-2-the-rides-in-urban-cities-68-are-much-more-than-the-rides-in-suburban-26-and-rural-5-cities.}
 
-\paragraph{Observed Trend 3}\label{observed-trend-3}
+\paragraph{Observed Trend 3: Urban cities have the largest percentage of
+drivers (\textasciitilde{}78\%) which is over the sum of suburban and
+rural.}\label{observed-trend-3-urban-cities-have-the-largest-percentage-of-drivers-78-which-is-over-the-sum-of-suburban-and-rural.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
-        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
-        \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k}{as} \PY{n+nn}{sns}
+{\color{incolor}In [{\color{incolor}131}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+          \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+          \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k}{as} \PY{n+nn}{sns}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{origin\PYZus{}city\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{raw\PYZus{}data/city\PYZus{}data.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n}{ride\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{raw\PYZus{}data/ride\PYZus{}data.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}132}]:} \PY{n}{origin\PYZus{}city\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{raw\PYZus{}data/city\PYZus{}data.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{ride\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{raw\PYZus{}data/ride\PYZus{}data.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{origin\PYZus{}city\PYZus{}data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{} set city as index}
-        \PY{c+c1}{\PYZsh{} city\PYZus{}data\PYZus{}as\PYZus{}index = origin\PYZus{}city\PYZus{}data.set\PYZus{}index(\PYZsq{}city\PYZsq{})}
+{\color{incolor}In [{\color{incolor}133}]:} \PY{n}{origin\PYZus{}city\PYZus{}data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+          \PY{c+c1}{\PYZsh{} set city as index}
+          \PY{c+c1}{\PYZsh{} city\PYZus{}data\PYZus{}as\PYZus{}index = origin\PYZus{}city\PYZus{}data.set\PYZus{}index(\PYZsq{}city\PYZsq{})}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}3}]:}              city  driver\_count   type
-        0      Kelseyland            63  Urban
-        1      Nguyenbury             8  Urban
-        2    East Douglas            12  Urban
-        3   West Dawnfurt            34  Urban
-        4  Rodriguezburgh            52  Urban
+{\color{outcolor}Out[{\color{outcolor}133}]:}              city  driver\_count   type
+          0      Kelseyland            63  Urban
+          1      Nguyenbury             8  Urban
+          2    East Douglas            12  Urban
+          3   West Dawnfurt            34  Urban
+          4  Rodriguezburgh            52  Urban
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} group by city}
-        \PY{n}{groupby\PYZus{}city} \PY{o}{=} \PY{n}{origin\PYZus{}city\PYZus{}data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{} sum up the driver count by city (If there is a duplicate city, the driver count would be added up.)}
-        \PY{n}{city\PYZus{}data} \PY{o}{=} \PY{n}{groupby\PYZus{}city}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{} drop the duplicate city, Port James, from the original dataset}
-        \PY{n}{dropped\PYZus{}duplicates\PYZus{}mask} \PY{o}{=} \PY{n}{origin\PYZus{}city\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{duplicated}\PY{p}{(}\PY{n}{keep}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{first}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n}{dropped\PYZus{}duplicates\PYZus{}df} \PY{o}{=} \PY{n}{origin\PYZus{}city\PYZus{}data}\PY{p}{[}\PY{o}{\PYZti{}}\PY{n}{dropped\PYZus{}duplicates\PYZus{}mask}\PY{p}{]}
-        \PY{n}{dx} \PY{o}{=} \PY{n}{dropped\PYZus{}duplicates\PYZus{}df}\PY{o}{.}\PY{n}{set\PYZus{}index}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{} add `city type` to the dataframe `city\PYZus{}data`}
-        \PY{n}{city\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{dx}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-        \PY{c+c1}{\PYZsh{} reset the index}
-        \PY{n}{new\PYZus{}city\PYZus{}data} \PY{o}{=} \PY{n}{city\PYZus{}data}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
-        \PY{n}{new\PYZus{}city\PYZus{}data\PYZus{}city\PYZus{}as\PYZus{}index} \PY{o}{=} \PY{n}{new\PYZus{}city\PYZus{}data}\PY{o}{.}\PY{n}{set\PYZus{}index}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n}{origin\PYZus{}city\PYZus{}data}
+{\color{incolor}In [{\color{incolor}134}]:} \PY{c+c1}{\PYZsh{} group by city}
+          \PY{n}{groupby\PYZus{}city} \PY{o}{=} \PY{n}{origin\PYZus{}city\PYZus{}data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{c+c1}{\PYZsh{} sum up the driver count by city (If there is a duplicate city, the driver count would be added up.)}
+          \PY{n}{city\PYZus{}data} \PY{o}{=} \PY{n}{groupby\PYZus{}city}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+          \PY{c+c1}{\PYZsh{} drop the duplicate city, Port James, from the original dataset}
+          \PY{n}{dropped\PYZus{}duplicates\PYZus{}mask} \PY{o}{=} \PY{n}{origin\PYZus{}city\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{duplicated}\PY{p}{(}\PY{n}{keep}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{first}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{dropped\PYZus{}duplicates\PYZus{}df} \PY{o}{=} \PY{n}{origin\PYZus{}city\PYZus{}data}\PY{p}{[}\PY{o}{\PYZti{}}\PY{n}{dropped\PYZus{}duplicates\PYZus{}mask}\PY{p}{]}
+          \PY{n}{dx} \PY{o}{=} \PY{n}{dropped\PYZus{}duplicates\PYZus{}df}\PY{o}{.}\PY{n}{set\PYZus{}index}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{c+c1}{\PYZsh{} add `city type` to the dataframe `city\PYZus{}data`}
+          \PY{n}{city\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{dx}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+          \PY{c+c1}{\PYZsh{} reset the index}
+          \PY{n}{new\PYZus{}city\PYZus{}data} \PY{o}{=} \PY{n}{city\PYZus{}data}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+          \PY{n}{new\PYZus{}city\PYZus{}data\PYZus{}city\PYZus{}as\PYZus{}index} \PY{o}{=} \PY{n}{new\PYZus{}city\PYZus{}data}\PY{o}{.}\PY{n}{set\PYZus{}index}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{origin\PYZus{}city\PYZus{}data}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}4}]:}                      city  driver\_count      type
-        0              Kelseyland            63     Urban
-        1              Nguyenbury             8     Urban
-        2            East Douglas            12     Urban
-        3           West Dawnfurt            34     Urban
-        4          Rodriguezburgh            52     Urban
-        5       South Josephville             4     Urban
-        6        West Sydneyhaven            70     Urban
-        7             Travisville            37     Urban
-        8             Torresshire            70     Urban
-        9               Lisaville            66     Urban
-        10              Mooreview            34     Urban
-        11             Smithhaven            67     Urban
-        12            Carrollfort            55     Urban
-        13        Port Josephfurt            28     Urban
-        14       Lake Jeffreyland            15     Urban
-        15            South Louis            12     Urban
-        16             West Peter            61     Urban
-        17        Kimberlychester            13     Urban
-        18             Alyssaberg            67     Urban
-        19               Sarabury            46     Urban
-        20            Yolandafurt             7     Urban
-        21            Edwardsbury            11     Urban
-        22        New Andreamouth            42     Urban
-        23              New David            31     Urban
-        24             Arnoldview            41     Urban
-        25           Williamshire            70     Urban
-        26               Lisatown            47     Urban
-        27              New Aaron            60     Urban
-        28            Swansonbury            64     Urban
-        29             Fosterside            69     Urban
-        ..                    {\ldots}           {\ldots}       {\ldots}
-        96               New Lynn            20  Suburban
-        97              Port Jose            11  Suburban
-        98               Johnland            13  Suburban
-        99              West Tony            17  Suburban
-        100            Port James             3  Suburban
-        101          Campbellport            26  Suburban
-        102          Port Guytown            26  Suburban
-        103           Webstertown            26  Suburban
-        104             Clarkstad            21  Suburban
-        105       North Tracyfort            18  Suburban
-        106           Martinmouth             5  Suburban
-        107      New Jessicamouth            22  Suburban
-        108  South Elizabethmouth             3     Rural
-        109         East Troybury             3     Rural
-        110             Kinghaven             3     Rural
-        111          New Johnbury             6     Rural
-        112              Erikport             3     Rural
-        113           Jacksonfort             6     Rural
-        114           Shelbyhaven             9     Rural
-        115           Matthewside             4     Rural
-        116          Kennethburgh             3     Rural
-        117          South Joseph             3     Rural
-        118         Manuelchester             7     Rural
-        119           Stevensport             6     Rural
-        120         North Whitney            10     Rural
-        121          East Stephen             6     Rural
-        122           East Leslie             9     Rural
-        123        Hernandezshire            10     Rural
-        124             Horneland             8     Rural
-        125        West Kevintown             5     Rural
-        
-        [126 rows x 3 columns]
+{\color{outcolor}Out[{\color{outcolor}134}]:}                      city  driver\_count      type
+          0              Kelseyland            63     Urban
+          1              Nguyenbury             8     Urban
+          2            East Douglas            12     Urban
+          3           West Dawnfurt            34     Urban
+          4          Rodriguezburgh            52     Urban
+          5       South Josephville             4     Urban
+          6        West Sydneyhaven            70     Urban
+          7             Travisville            37     Urban
+          8             Torresshire            70     Urban
+          9               Lisaville            66     Urban
+          10              Mooreview            34     Urban
+          11             Smithhaven            67     Urban
+          12            Carrollfort            55     Urban
+          13        Port Josephfurt            28     Urban
+          14       Lake Jeffreyland            15     Urban
+          15            South Louis            12     Urban
+          16             West Peter            61     Urban
+          17        Kimberlychester            13     Urban
+          18             Alyssaberg            67     Urban
+          19               Sarabury            46     Urban
+          20            Yolandafurt             7     Urban
+          21            Edwardsbury            11     Urban
+          22        New Andreamouth            42     Urban
+          23              New David            31     Urban
+          24             Arnoldview            41     Urban
+          25           Williamshire            70     Urban
+          26               Lisatown            47     Urban
+          27              New Aaron            60     Urban
+          28            Swansonbury            64     Urban
+          29             Fosterside            69     Urban
+          ..                    {\ldots}           {\ldots}       {\ldots}
+          96               New Lynn            20  Suburban
+          97              Port Jose            11  Suburban
+          98               Johnland            13  Suburban
+          99              West Tony            17  Suburban
+          100            Port James             3  Suburban
+          101          Campbellport            26  Suburban
+          102          Port Guytown            26  Suburban
+          103           Webstertown            26  Suburban
+          104             Clarkstad            21  Suburban
+          105       North Tracyfort            18  Suburban
+          106           Martinmouth             5  Suburban
+          107      New Jessicamouth            22  Suburban
+          108  South Elizabethmouth             3     Rural
+          109         East Troybury             3     Rural
+          110             Kinghaven             3     Rural
+          111          New Johnbury             6     Rural
+          112              Erikport             3     Rural
+          113           Jacksonfort             6     Rural
+          114           Shelbyhaven             9     Rural
+          115           Matthewside             4     Rural
+          116          Kennethburgh             3     Rural
+          117          South Joseph             3     Rural
+          118         Manuelchester             7     Rural
+          119           Stevensport             6     Rural
+          120         North Whitney            10     Rural
+          121          East Stephen             6     Rural
+          122           East Leslie             9     Rural
+          123        Hernandezshire            10     Rural
+          124             Horneland             8     Rural
+          125        West Kevintown             5     Rural
+          
+          [126 rows x 3 columns]
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} Merge the two datasets by city}
-        \PY{n}{merged\PYZus{}df} \PY{o}{=} \PY{n}{ride\PYZus{}data}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{new\PYZus{}city\PYZus{}data}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{outer}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n}{merged\PYZus{}df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
-        \PY{n}{merged\PYZus{}df}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{merged.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}135}]:} \PY{c+c1}{\PYZsh{} Merge the two datasets by city}
+          \PY{n}{merged\PYZus{}df} \PY{o}{=} \PY{n}{ride\PYZus{}data}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{new\PYZus{}city\PYZus{}data}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{outer}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{merged\PYZus{}df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+          \PY{n}{merged\PYZus{}df}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{merged.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{group\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{merged\PYZus{}df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         
-         \PY{c+c1}{\PYZsh{} average fare/city}
-         \PY{n}{average\PYZus{}fare}\PY{o}{=}\PY{n}{group\PYZus{}by\PYZus{}city}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fare}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
-         
-         \PY{c+c1}{\PYZsh{} total rides/city}
-         \PY{n}{total\PYZus{}rides\PYZus{}per\PYZus{}city} \PY{o}{=} \PY{n}{group\PYZus{}by\PYZus{}city}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ride\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
-         
-         \PY{c+c1}{\PYZsh{} total drivers/city}
-         \PY{n}{total\PYZus{}drivers\PYZus{}per\PYZus{}city} \PY{o}{=} \PY{n}{new\PYZus{}city\PYZus{}data\PYZus{}city\PYZus{}as\PYZus{}index}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{driver\PYZus{}count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-         
-         \PY{c+c1}{\PYZsh{} city types}
-         \PY{n}{city\PYZus{}types} \PY{o}{=} \PY{n}{new\PYZus{}city\PYZus{}data\PYZus{}city\PYZus{}as\PYZus{}index}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-         
-         \PY{c+c1}{\PYZsh{} pyber\PYZus{}analysis}
-         \PY{n}{pyber\PYZus{}analysis\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{)}
-         \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Drivers Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{total\PYZus{}drivers\PYZus{}per\PYZus{}city}
-         \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Average Fare}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{=} \PY{n}{average\PYZus{}fare}
-         \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Rides Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{total\PYZus{}rides\PYZus{}per\PYZus{}city}
-         \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{city\PYZus{}types}
-         
-         \PY{c+c1}{\PYZsh{} display}
-         \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}136}]:} \PY{n}{group\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{merged\PYZus{}df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{city}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          
+          \PY{c+c1}{\PYZsh{} average fare/city}
+          \PY{n}{average\PYZus{}fare}\PY{o}{=}\PY{n}{group\PYZus{}by\PYZus{}city}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fare}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+          
+          \PY{c+c1}{\PYZsh{} total rides/city}
+          \PY{n}{total\PYZus{}rides\PYZus{}per\PYZus{}city} \PY{o}{=} \PY{n}{group\PYZus{}by\PYZus{}city}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ride\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+          
+          \PY{c+c1}{\PYZsh{} total drivers/city}
+          \PY{n}{total\PYZus{}drivers\PYZus{}per\PYZus{}city} \PY{o}{=} \PY{n}{new\PYZus{}city\PYZus{}data\PYZus{}city\PYZus{}as\PYZus{}index}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{driver\PYZus{}count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+          
+          \PY{c+c1}{\PYZsh{} city types}
+          \PY{n}{city\PYZus{}types} \PY{o}{=} \PY{n}{new\PYZus{}city\PYZus{}data\PYZus{}city\PYZus{}as\PYZus{}index}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+          
+          \PY{c+c1}{\PYZsh{} pyber\PYZus{}analysis}
+          \PY{n}{pyber\PYZus{}analysis\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{)}
+          \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Drivers Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{total\PYZus{}drivers\PYZus{}per\PYZus{}city}
+          \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Average Fare}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{=} \PY{n}{average\PYZus{}fare}
+          \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Rides Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{total\PYZus{}rides\PYZus{}per\PYZus{}city}
+          \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{city\PYZus{}types}
+          
+          \PY{c+c1}{\PYZsh{} display}
+          \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}16}]:}               Total Number of Drivers Per City  Average Fare  \textbackslash{}
-         city                                                           
-         Alvarezhaven                                21     23.928710   
-         Alyssaberg                                  67     20.609615   
-         Anitamouth                                  16     37.315556   
-         Antoniomouth                                21     23.625000   
-         Aprilchester                                49     21.981579   
-         
-                       Total Number of Rides Per City City Types  
-         city                                                     
-         Alvarezhaven                              31      Urban  
-         Alyssaberg                                26      Urban  
-         Anitamouth                                 9   Suburban  
-         Antoniomouth                              22      Urban  
-         Aprilchester                              19      Urban  
+{\color{outcolor}Out[{\color{outcolor}136}]:}               Total Number of Drivers Per City  Average Fare  \textbackslash{}
+          city                                                           
+          Alvarezhaven                                21     23.928710   
+          Alyssaberg                                  67     20.609615   
+          Anitamouth                                  16     37.315556   
+          Antoniomouth                                21     23.625000   
+          Aprilchester                                49     21.981579   
+          
+                        Total Number of Rides Per City City Types  
+          city                                                     
+          Alvarezhaven                              31      Urban  
+          Alyssaberg                                26      Urban  
+          Anitamouth                                 9   Suburban  
+          Antoniomouth                              22      Urban  
+          Aprilchester                              19      Urban  
 \end{Verbatim}
             
     \subsection{Bubble Plot of Ride Sharing
 Data}\label{bubble-plot-of-ride-sharing-data}
 
-    \subsection{Approach 1 - by
+    \subsubsection{Approach \#1 - by
 matplotlib}\label{approach-1---by-matplotlib}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} bubble plot}
-         \PY{c+c1}{\PYZsh{} Gold, Light Sky Blue, and Light Coral}
-         \PY{n}{colors} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Urban}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lightcoral}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
-                   \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Suburban}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lightskyblue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
-                   \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Rural}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
-         
-         \PY{n}{color} \PY{o}{=} \PY{k}{lambda} \PY{n}{city\PYZus{}type}\PY{p}{:} \PY{n}{colors}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{city\PYZus{}type}\PY{p}{)}
-         
-         \PY{c+c1}{\PYZsh{} add a new column, `color` to the dataframe }
-         \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{color}\PY{p}{)}
-         
-         
-         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
-         
-         \PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{35}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Total Number of Rides (Per City)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Average Fare (\PYZdl{})}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Pyber Ride Sharing Data (2018)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         
-         
-         \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{r} \PY{o+ow}{in} \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{o}{.}\PY{n}{iterrows}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{r}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Rides Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} 
-                         \PY{n}{y}\PY{o}{=}\PY{n}{r}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Average Fare}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} 
-                         \PY{n}{s}\PY{o}{=}\PY{n}{r}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Drivers Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{l+m+mi}{10}\PY{p}{,}
-                         \PY{n}{marker}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
-                         \PY{n}{facecolors}\PY{o}{=}\PY{n}{colors}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{r}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,}
-                         \PY{n}{edgecolors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
-                         \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,}
-                         \PY{n}{linewidths}\PY{o}{=} \PY{l+m+mi}{1}
-                         \PY{p}{)}
-         \PY{c+c1}{\PYZsh{} Here we create a legend by ploting empty lists with the desired size and label}
-         \PY{k}{for} \PY{n}{city\PYZus{}type}\PY{p}{,} \PY{n}{color} \PY{o+ow}{in} \PY{n}{colors}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{n}{color}\PY{p}{,} \PY{n}{edgecolors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{30}\PY{p}{,} \PY{n}{linewidths}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{n}{city\PYZus{}type}\PY{p}{)} 
-         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{scatterpoints}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{labelspacing}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}  
-         
-         \PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{k+kc}{True}\PY{p}{)}
-         \PY{c+c1}{\PYZsh{} add a side note}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mi}{36}\PY{p}{,}\PY{l+m+mi}{37}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Note:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Circle size correlates with driver count per city.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{bubble.png}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}137}]:} \PY{c+c1}{\PYZsh{} colors by city type}
+          \PY{c+c1}{\PYZsh{} Gold, Light Sky Blue, and Light Coral}
+          \PY{n}{colors} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Urban}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lightcoral}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Suburban}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lightskyblue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Rural}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+          
+          \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{35}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Total Number of Rides (Per City)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Average Fare (\PYZdl{})}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Pyber Ride Sharing Data (2018)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          
+          
+          \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{r} \PY{o+ow}{in} \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{o}{.}\PY{n}{iterrows}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{r}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Rides Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} 
+                          \PY{n}{y}\PY{o}{=}\PY{n}{r}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Average Fare}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} 
+                          \PY{n}{s}\PY{o}{=}\PY{n}{r}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Drivers Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{l+m+mi}{10}\PY{p}{,}
+                          \PY{n}{facecolors}\PY{o}{=}\PY{n}{colors}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{r}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,}
+                          \PY{n}{edgecolors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                          \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,}
+                          \PY{n}{linewidths}\PY{o}{=} \PY{l+m+mi}{1}
+                          \PY{p}{)}
+              
+          \PY{c+c1}{\PYZsh{} Here we create a legend by ploting empty lists with the desired size and label}
+          \PY{k}{for} \PY{n}{city\PYZus{}type}\PY{p}{,} \PY{n}{color} \PY{o+ow}{in} \PY{n}{colors}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{n}{color}\PY{p}{,} \PY{n}{edgecolors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{30}\PY{p}{,} \PY{n}{linewidths}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{n}{city\PYZus{}type}\PY{p}{)} 
+          \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{scatterpoints}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{labelspacing}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}  
+          \PY{c+c1}{\PYZsh{} grid}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{k+kc}{True}\PY{p}{)}
+          \PY{c+c1}{\PYZsh{} add a side note}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mi}{36}\PY{p}{,}\PY{l+m+mi}{37}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Note:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Circle size correlates with driver count per city.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -513,77 +513,134 @@ matplotlib}\label{approach-1---by-matplotlib}
     \end{center}
     { \hspace*{\fill} \\}
     
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
-\end{Verbatim}
-
-
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}27}]:}               Total Number of Drivers Per City  Average Fare  \textbackslash{}
-         city                                                           
-         Alvarezhaven                                21     23.928710   
-         Alyssaberg                                  67     20.609615   
-         Anitamouth                                  16     37.315556   
-         Antoniomouth                                21     23.625000   
-         Aprilchester                                49     21.981579   
-         
-                       Total Number of Rides Per City City Types         Color  
-         city                                                                   
-         Alvarezhaven                              31      Urban    lightcoral  
-         Alyssaberg                                26      Urban    lightcoral  
-         Anitamouth                                 9   Suburban  lightskyblue  
-         Antoniomouth                              22      Urban    lightcoral  
-         Aprilchester                              19      Urban    lightcoral  
-\end{Verbatim}
-            
-    \subsection{Total Fares by City Type}\label{total-fares-by-city-type}
+    \subsubsection{Approach \#2- by pandas
+plot}\label{approach-2--by-pandas-plot}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{group\PYZus{}by\PYZus{}city\PYZus{}type} \PY{o}{=} \PY{n}{merged\PYZus{}df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{} \PYZpc{} of the total fare by city type}
-        \PY{n}{total\PYZus{}fare\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{group\PYZus{}by\PYZus{}city\PYZus{}type}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fare}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
-        \PY{n}{total\PYZus{}fare} \PY{o}{=} \PY{n}{total\PYZus{}fare\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
-        \PY{n}{total\PYZus{}fare\PYZus{}percent\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{total\PYZus{}fare\PYZus{}by\PYZus{}city}\PY{o}{/}\PY{n}{total\PYZus{}fare} \PY{o}{*} \PY{l+m+mf}{100.0}
-        \PY{c+c1}{\PYZsh{} plot the pie chart for the percent of total fares by city type }
-        \PY{n}{pie\PYZus{}city\PYZus{}types} \PY{o}{=} \PY{n}{total\PYZus{}fare\PYZus{}percent\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{index}
-        \PY{n}{pie\PYZus{}percents} \PY{o}{=} \PY{n}{total\PYZus{}fare\PYZus{}percent\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{values}
-        \PY{n}{colors\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{n}{colors}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{city\PYZus{}type}\PY{p}{)} \PY{k}{for} \PY{n}{city\PYZus{}type} \PY{o+ow}{in} \PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{]}
-        \PY{n}{explode} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{)}
-        \PY{n}{plt}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{pie\PYZus{}percents}\PY{p}{,} \PY{n}{explode}\PY{o}{=}\PY{n}{explode}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{,} \PY{n}{colors}\PY{o}{=}\PY{n}{colors\PYZus{}list}\PY{p}{,} \PY{n}{autopct}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}1.1f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} 
-                \PY{n}{shadow}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{startangle}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
-        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{} o}\PY{l+s+s2}{f Total Fares by City Type}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}138}]:} \PY{n}{color} \PY{o}{=} \PY{k}{lambda} \PY{n}{city\PYZus{}type}\PY{p}{:} \PY{n}{colors}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{city\PYZus{}type}\PY{p}{)}
+          
+          \PY{c+c1}{\PYZsh{} add a new column, `color`, to the dataframe }
+          \PY{n}{pyber\PYZus{}analysis\PYZus{}df\PYZus{}added\PYZus{}color} \PY{o}{=} \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+          \PY{n}{pyber\PYZus{}analysis\PYZus{}df\PYZus{}added\PYZus{}color}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{color}\PY{p}{)}
+          
+          \PY{c+c1}{\PYZsh{} plot the bubble chart}
+          \PY{n}{bubble\PYZus{}plot} \PY{o}{=} \PY{n}{pyber\PYZus{}analysis\PYZus{}df\PYZus{}added\PYZus{}color}\PY{o}{.}\PY{n}{plot}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Rides Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                                       \PY{n}{y}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Average Fare}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                                       \PY{n}{c}\PY{o}{=}\PY{n}{pyber\PYZus{}analysis\PYZus{}df\PYZus{}added\PYZus{}color}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                                                       \PY{n}{s}\PY{o}{=}\PY{n}{pyber\PYZus{}analysis\PYZus{}df\PYZus{}added\PYZus{}color}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Drivers Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{l+m+mi}{10}\PY{p}{,}
+                                                       \PY{n}{alpha}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,}
+                                                       \PY{n}{edgecolors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                                       \PY{n}{linewidths}\PY{o}{=}\PY{l+m+mf}{1.2}\PY{p}{,}
+                                                       \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+          \PY{n}{bubble\PYZus{}plot}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{38}\PY{p}{)}
+          \PY{n}{bubble\PYZus{}plot}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{52}\PY{p}{)}
+          \PY{n}{bubble\PYZus{}plot}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Pyber Ride Sharing Data (2018)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{bubble\PYZus{}plot}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Total Number of Rides (Per City)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{bubble\PYZus{}plot}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Average Fare (\PYZdl{})}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{bubble\PYZus{}plot}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{k+kc}{True}\PY{p}{)}
+          
+          \PY{c+c1}{\PYZsh{} text}
+          \PY{n}{bubble\PYZus{}plot}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mi}{40}\PY{p}{,}\PY{l+m+mi}{37}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Note:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Circle size correlates with driver count per city.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          
+          \PY{c+c1}{\PYZsh{} Here we create a legend by ploting empty lists with the desired size and label}
+          \PY{k}{for} \PY{n}{city\PYZus{}type}\PY{p}{,} \PY{n}{color} \PY{o+ow}{in} \PY{n}{colors}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{n}{color}\PY{p}{,} \PY{n}{edgecolors}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{30}\PY{p}{,} \PY{n}{linewidths}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{n}{city\PYZus{}type}\PY{p}{)} 
+          \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{scatterpoints}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{labelspacing}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}  
+          \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_13_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_12_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{Approach \#3 - by Seaborn}\label{approach-3---by-seaborn}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}139}]:} \PY{c+c1}{\PYZsh{} fig, ax = plt.subplots(figsize=(20,20))}
+          \PY{c+c1}{\PYZsh{} ax = subplot(111)}
+          \PY{n}{sns}\PY{o}{.}\PY{n}{set\PYZus{}style}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{darkgrid}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          
+          \PY{n}{g} \PY{o}{=} \PY{n}{sns}\PY{o}{.}\PY{n}{lmplot}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Rides Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                         \PY{n}{y}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Average Fare}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                         \PY{n}{data}\PY{o}{=}\PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{,}
+                         \PY{n}{scatter\PYZus{}kws}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{s}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Drivers Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{l+m+mi}{5}\PY{p}{,}
+                                      \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{edgecolors}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                      \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{linewidths}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{l+m+mf}{1.2}\PY{p}{,}
+                                      \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{alpha}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mf}{0.7}\PY{p}{\PYZcb{}}\PY{p}{,}             
+                         \PY{n}{hue}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                         \PY{n}{palette}\PY{o}{=}\PY{n}{colors}\PY{p}{,}
+                         \PY{n}{fit\PYZus{}reg}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,}
+                         \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,}
+                         \PY{n}{aspect}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}
+                         \PY{n}{legend\PYZus{}out}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+          
+          \PY{c+c1}{\PYZsh{} set xlim and ylim}
+          \PY{n}{g}\PY{o}{.}\PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{38}\PY{p}{)}
+          \PY{n}{g}\PY{o}{.}\PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,}\PY{l+m+mi}{51}\PY{p}{)}
+          \PY{c+c1}{\PYZsh{} title, labels}
+          \PY{n}{g}\PY{o}{.}\PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Pyber Ride Sharing Data (2018)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{g}\PY{o}{.}\PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Total Number of Rides (Per City)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{g}\PY{o}{.}\PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Average Fare (\PYZdl{})}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{g}\PY{o}{.}\PY{n}{ax}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mi}{40}\PY{p}{,}\PY{l+m+mi}{37}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Note:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Circle size correlates with driver count per city.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Total Fares by City Type}\label{total-fares-by-city-type}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}140}]:} \PY{n}{group\PYZus{}by\PYZus{}city\PYZus{}type} \PY{o}{=} \PY{n}{merged\PYZus{}df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{c+c1}{\PYZsh{} \PYZpc{} of the total fare by city type}
+          \PY{n}{total\PYZus{}fare\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{group\PYZus{}by\PYZus{}city\PYZus{}type}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fare}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+          \PY{n}{total\PYZus{}fare} \PY{o}{=} \PY{n}{total\PYZus{}fare\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+          \PY{n}{total\PYZus{}fare\PYZus{}percent\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{total\PYZus{}fare\PYZus{}by\PYZus{}city}\PY{o}{/}\PY{n}{total\PYZus{}fare} \PY{o}{*} \PY{l+m+mf}{100.0}
+          \PY{c+c1}{\PYZsh{} plot the pie chart for the percent of total fares by city type }
+          \PY{n}{pie\PYZus{}city\PYZus{}types} \PY{o}{=} \PY{n}{total\PYZus{}fare\PYZus{}percent\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{index}
+          \PY{n}{pie\PYZus{}percents} \PY{o}{=} \PY{n}{total\PYZus{}fare\PYZus{}percent\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{values}
+          \PY{n}{colors\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{n}{colors}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{city\PYZus{}type}\PY{p}{)} \PY{k}{for} \PY{n}{city\PYZus{}type} \PY{o+ow}{in} \PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{]}
+          \PY{n}{explode} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{pie\PYZus{}percents}\PY{p}{,} \PY{n}{explode}\PY{o}{=}\PY{n}{explode}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{,} \PY{n}{colors}\PY{o}{=}\PY{n}{colors\PYZus{}list}\PY{p}{,} \PY{n}{autopct}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}1.1f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} 
+                  \PY{n}{shadow}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{startangle}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{} o}\PY{l+s+s2}{f Total Fares by City Type}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_16_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
     \subsection{Total Rides by City Type}\label{total-rides-by-city-type}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} \PYZpc{} of Total Rides by City Type}
-         \PY{n}{total\PYZus{}rides\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{group\PYZus{}by\PYZus{}city\PYZus{}type}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ride\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-         \PY{n}{total\PYZus{}rides} \PY{o}{=} \PY{n}{total\PYZus{}rides\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
-         \PY{n}{total\PYZus{}ride\PYZus{}percents\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{total\PYZus{}rides\PYZus{}by\PYZus{}city} \PY{o}{/} \PY{n}{total\PYZus{}rides} \PY{o}{*} \PY{l+m+mf}{100.0}
-         
-         \PY{c+c1}{\PYZsh{} plot the chart for the percent of total rides by city type}
-         \PY{c+c1}{\PYZsh{} plot the pie chart }
-         \PY{n}{pie\PYZus{}city\PYZus{}types} \PY{o}{=} \PY{n}{total\PYZus{}ride\PYZus{}percents\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{index}
-         \PY{n}{pie\PYZus{}percents} \PY{o}{=} \PY{n}{total\PYZus{}ride\PYZus{}percents\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{values}
-         \PY{n}{colors\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{n}{colors}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{city\PYZus{}type}\PY{p}{)} \PY{k}{for} \PY{n}{city\PYZus{}type} \PY{o+ow}{in} \PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{]}
-         \PY{n}{explode} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{pie\PYZus{}percents}\PY{p}{,} \PY{n}{explode}\PY{o}{=}\PY{n}{explode}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{,} \PY{n}{colors}\PY{o}{=}\PY{n}{colors\PYZus{}list}\PY{p}{,} \PY{n}{autopct}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}1.1f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} 
-                 \PY{n}{shadow}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{startangle}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{} o}\PY{l+s+s2}{f Total Rides by City Type}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}141}]:} \PY{c+c1}{\PYZsh{} \PYZpc{} of Total Rides by City Type}
+          \PY{n}{total\PYZus{}rides\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{group\PYZus{}by\PYZus{}city\PYZus{}type}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ride\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+          \PY{n}{total\PYZus{}rides} \PY{o}{=} \PY{n}{total\PYZus{}rides\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+          \PY{n}{total\PYZus{}ride\PYZus{}percents\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{total\PYZus{}rides\PYZus{}by\PYZus{}city} \PY{o}{/} \PY{n}{total\PYZus{}rides} \PY{o}{*} \PY{l+m+mf}{100.0}
+          
+          \PY{c+c1}{\PYZsh{} plot the chart for the percent of total rides by city type}
+          \PY{c+c1}{\PYZsh{} plot the pie chart }
+          \PY{n}{pie\PYZus{}city\PYZus{}types} \PY{o}{=} \PY{n}{total\PYZus{}ride\PYZus{}percents\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{index}
+          \PY{n}{pie\PYZus{}percents} \PY{o}{=} \PY{n}{total\PYZus{}ride\PYZus{}percents\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{values}
+          \PY{n}{colors\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{n}{colors}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{city\PYZus{}type}\PY{p}{)} \PY{k}{for} \PY{n}{city\PYZus{}type} \PY{o+ow}{in} \PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{]}
+          \PY{n}{explode} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{pie\PYZus{}percents}\PY{p}{,} \PY{n}{explode}\PY{o}{=}\PY{n}{explode}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{,} \PY{n}{colors}\PY{o}{=}\PY{n}{colors\PYZus{}list}\PY{p}{,} \PY{n}{autopct}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}1.1f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} 
+                  \PY{n}{shadow}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{startangle}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{} o}\PY{l+s+s2}{f Total Rides by City Type}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_15_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_18_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -591,30 +648,30 @@ matplotlib}\label{approach-1---by-matplotlib}
 Type}\label{total-drivers-by-city-type}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} \PYZpc{} of Total Drivers by City Type}
-         
-         \PY{n}{pyber\PYZus{}analysis\PYZus{}reset\PYZus{}pd} \PY{o}{=} \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
-         \PY{n}{group\PYZus{}by\PYZus{}city\PYZus{}type} \PY{o}{=} \PY{n}{pyber\PYZus{}analysis\PYZus{}reset\PYZus{}pd}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{total\PYZus{}drivers\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{group\PYZus{}by\PYZus{}city\PYZus{}type}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Drivers Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-         
-         \PY{n}{total\PYZus{}drivers} \PY{o}{=} \PY{n}{total\PYZus{}drivers\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
-         
-         \PY{n}{total\PYZus{}driver\PYZus{}percents\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{total\PYZus{}drivers\PYZus{}by\PYZus{}city}\PY{o}{/}\PY{n}{total\PYZus{}drivers} \PY{o}{*} \PY{l+m+mf}{100.0}
-         
-         \PY{c+c1}{\PYZsh{} plot the pie chart for the percent of total drivers by city type}
-         \PY{n}{pie\PYZus{}city\PYZus{}types} \PY{o}{=} \PY{n}{total\PYZus{}driver\PYZus{}percents\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{index}
-         \PY{n}{pie\PYZus{}percents} \PY{o}{=} \PY{n}{total\PYZus{}driver\PYZus{}percents\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{values}
-         \PY{n}{colors\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{n}{colors}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{city\PYZus{}type}\PY{p}{)} \PY{k}{for} \PY{n}{city\PYZus{}type} \PY{o+ow}{in} \PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{]}
-         \PY{n}{explode} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{pie\PYZus{}percents}\PY{p}{,} \PY{n}{explode}\PY{o}{=}\PY{n}{explode}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{,} \PY{n}{colors}\PY{o}{=}\PY{n}{colors\PYZus{}list}\PY{p}{,} \PY{n}{autopct}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}1.1f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} 
-                 \PY{n}{shadow}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{startangle}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{} o}\PY{l+s+s2}{f Total Driver by City Type}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}142}]:} \PY{c+c1}{\PYZsh{} \PYZpc{} of Total Drivers by City Type}
+          
+          \PY{n}{pyber\PYZus{}analysis\PYZus{}reset\PYZus{}pd} \PY{o}{=} \PY{n}{pyber\PYZus{}analysis\PYZus{}df}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+          \PY{n}{group\PYZus{}by\PYZus{}city\PYZus{}type} \PY{o}{=} \PY{n}{pyber\PYZus{}analysis\PYZus{}reset\PYZus{}pd}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{City Types}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{total\PYZus{}drivers\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{group\PYZus{}by\PYZus{}city\PYZus{}type}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Number of Drivers Per City}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+          
+          \PY{n}{total\PYZus{}drivers} \PY{o}{=} \PY{n}{total\PYZus{}drivers\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+          
+          \PY{n}{total\PYZus{}driver\PYZus{}percents\PYZus{}by\PYZus{}city} \PY{o}{=} \PY{n}{total\PYZus{}drivers\PYZus{}by\PYZus{}city}\PY{o}{/}\PY{n}{total\PYZus{}drivers} \PY{o}{*} \PY{l+m+mf}{100.0}
+          
+          \PY{c+c1}{\PYZsh{} plot the pie chart for the percent of total drivers by city type}
+          \PY{n}{pie\PYZus{}city\PYZus{}types} \PY{o}{=} \PY{n}{total\PYZus{}driver\PYZus{}percents\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{index}
+          \PY{n}{pie\PYZus{}percents} \PY{o}{=} \PY{n}{total\PYZus{}driver\PYZus{}percents\PYZus{}by\PYZus{}city}\PY{o}{.}\PY{n}{values}
+          \PY{n}{colors\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{n}{colors}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{city\PYZus{}type}\PY{p}{)} \PY{k}{for} \PY{n}{city\PYZus{}type} \PY{o+ow}{in} \PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{]}
+          \PY{n}{explode} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{pie}\PY{p}{(}\PY{n}{pie\PYZus{}percents}\PY{p}{,} \PY{n}{explode}\PY{o}{=}\PY{n}{explode}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{n}{pie\PYZus{}city\PYZus{}types}\PY{p}{,} \PY{n}{colors}\PY{o}{=}\PY{n}{colors\PYZus{}list}\PY{p}{,} \PY{n}{autopct}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}1.1f}\PY{l+s+si}{\PYZpc{}\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} 
+                  \PY{n}{shadow}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{startangle}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{} o}\PY{l+s+s2}{f Total Driver by City Type}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_17_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_20_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
