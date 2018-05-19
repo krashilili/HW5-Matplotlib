@@ -21,76 +21,6 @@ ride_data = pd.read_csv("raw_data/ride_data.csv")
 
 
 ```python
-origin_city_data.head()
-# set city as index
-# city_data_as_index = origin_city_data.set_index('city')
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>city</th>
-      <th>driver_count</th>
-      <th>type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Kelseyland</td>
-      <td>63</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Nguyenbury</td>
-      <td>8</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>East Douglas</td>
-      <td>12</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>West Dawnfurt</td>
-      <td>34</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Rodriguezburgh</td>
-      <td>52</td>
-      <td>Urban</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
 # group by city
 groupby_city = origin_city_data.groupby('city')
 # sum up the driver count by city (If there is a duplicate city, the driver count would be added up.)
@@ -104,7 +34,7 @@ city_data['type'] = dx['type']
 # reset the index
 new_city_data = city_data.reset_index()
 new_city_data_city_as_index = new_city_data.set_index('city')
-origin_city_data
+origin_city_data.head()
 ```
 
 
@@ -164,345 +94,8 @@ origin_city_data
       <td>52</td>
       <td>Urban</td>
     </tr>
-    <tr>
-      <th>5</th>
-      <td>South Josephville</td>
-      <td>4</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>West Sydneyhaven</td>
-      <td>70</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Travisville</td>
-      <td>37</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Torresshire</td>
-      <td>70</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Lisaville</td>
-      <td>66</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Mooreview</td>
-      <td>34</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Smithhaven</td>
-      <td>67</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Carrollfort</td>
-      <td>55</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>Port Josephfurt</td>
-      <td>28</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Lake Jeffreyland</td>
-      <td>15</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>South Louis</td>
-      <td>12</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>West Peter</td>
-      <td>61</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Kimberlychester</td>
-      <td>13</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Alyssaberg</td>
-      <td>67</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>Sarabury</td>
-      <td>46</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>Yolandafurt</td>
-      <td>7</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>Edwardsbury</td>
-      <td>11</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>New Andreamouth</td>
-      <td>42</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>New David</td>
-      <td>31</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>Arnoldview</td>
-      <td>41</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>Williamshire</td>
-      <td>70</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>Lisatown</td>
-      <td>47</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>New Aaron</td>
-      <td>60</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>Swansonbury</td>
-      <td>64</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>Fosterside</td>
-      <td>69</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>New Lynn</td>
-      <td>20</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>Port Jose</td>
-      <td>11</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>Johnland</td>
-      <td>13</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>West Tony</td>
-      <td>17</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>100</th>
-      <td>Port James</td>
-      <td>3</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>101</th>
-      <td>Campbellport</td>
-      <td>26</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>102</th>
-      <td>Port Guytown</td>
-      <td>26</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>103</th>
-      <td>Webstertown</td>
-      <td>26</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>104</th>
-      <td>Clarkstad</td>
-      <td>21</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>105</th>
-      <td>North Tracyfort</td>
-      <td>18</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>106</th>
-      <td>Martinmouth</td>
-      <td>5</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>107</th>
-      <td>New Jessicamouth</td>
-      <td>22</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>108</th>
-      <td>South Elizabethmouth</td>
-      <td>3</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>109</th>
-      <td>East Troybury</td>
-      <td>3</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>110</th>
-      <td>Kinghaven</td>
-      <td>3</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>111</th>
-      <td>New Johnbury</td>
-      <td>6</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>112</th>
-      <td>Erikport</td>
-      <td>3</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>113</th>
-      <td>Jacksonfort</td>
-      <td>6</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>114</th>
-      <td>Shelbyhaven</td>
-      <td>9</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>115</th>
-      <td>Matthewside</td>
-      <td>4</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>116</th>
-      <td>Kennethburgh</td>
-      <td>3</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>117</th>
-      <td>South Joseph</td>
-      <td>3</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>118</th>
-      <td>Manuelchester</td>
-      <td>7</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>119</th>
-      <td>Stevensport</td>
-      <td>6</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>120</th>
-      <td>North Whitney</td>
-      <td>10</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>121</th>
-      <td>East Stephen</td>
-      <td>6</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>122</th>
-      <td>East Leslie</td>
-      <td>9</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>123</th>
-      <td>Hernandezshire</td>
-      <td>10</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>124</th>
-      <td>Horneland</td>
-      <td>8</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>125</th>
-      <td>West Kevintown</td>
-      <td>5</td>
-      <td>Rural</td>
-    </tr>
   </tbody>
 </table>
-<p>126 rows × 3 columns</p>
 </div>
 
 
@@ -512,8 +105,88 @@ origin_city_data
 # Merge the two datasets by city
 merged_df = ride_data.merge(new_city_data, on='city', how='outer')
 merged_df.head()
-merged_df.to_csv('merged.csv')
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>date</th>
+      <th>fare</th>
+      <th>ride_id</th>
+      <th>driver_count</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sarabury</td>
+      <td>2016-01-16 13:49:27</td>
+      <td>38.35</td>
+      <td>5403689035038</td>
+      <td>46</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Sarabury</td>
+      <td>2016-07-23 07:42:44</td>
+      <td>21.76</td>
+      <td>7546681945283</td>
+      <td>46</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Sarabury</td>
+      <td>2016-04-02 04:32:25</td>
+      <td>38.03</td>
+      <td>4932495851866</td>
+      <td>46</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sarabury</td>
+      <td>2016-06-23 05:03:41</td>
+      <td>26.82</td>
+      <td>6711035373406</td>
+      <td>46</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sarabury</td>
+      <td>2016-09-30 12:48:34</td>
+      <td>30.30</td>
+      <td>6388737278232</td>
+      <td>46</td>
+      <td>Urban</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -661,7 +334,7 @@ plt.show()
 ```
 
 
-![png](output_10_0.png)
+![png](output_9_0.png)
 
 
 ### Approach #2- by pandas plot
@@ -701,7 +374,7 @@ plt.show()
 ```
 
 
-![png](output_12_0.png)
+![png](output_11_0.png)
 
 
 ### Approach #3 - by Seaborn
@@ -738,7 +411,7 @@ plt.show()
 ```
 
 
-![png](output_14_0.png)
+![png](output_13_0.png)
 
 
 ## Total Fares by City Type
@@ -762,7 +435,7 @@ plt.show()
 ```
 
 
-![png](output_16_0.png)
+![png](output_15_0.png)
 
 
 ## Total Rides by City Type
@@ -787,7 +460,7 @@ plt.show()
 ```
 
 
-![png](output_18_0.png)
+![png](output_17_0.png)
 
 
 ## Total Drivers by City Type
@@ -816,5 +489,5 @@ plt.show()
 ```
 
 
-![png](output_20_0.png)
+![png](output_19_0.png)
 
